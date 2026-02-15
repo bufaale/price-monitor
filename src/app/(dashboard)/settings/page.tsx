@@ -16,6 +16,8 @@ export default function SettingsPage() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [alertEmail, setAlertEmail] = useState("");
   const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -37,6 +39,8 @@ export default function SettingsPage() {
       if (profile) {
         setFullName(profile.full_name || "");
         setAvatarUrl(profile.avatar_url || "");
+        setCompanyName(profile.company_name || "");
+        setAlertEmail(profile.alert_email || "");
       }
 
       setLoading(false);
@@ -56,7 +60,7 @@ export default function SettingsPage() {
       const supabase = createClient();
       const { error } = await supabase
         .from("profiles")
-        .update({ full_name: fullName, avatar_url: avatarUrl })
+        .update({ full_name: fullName, avatar_url: avatarUrl, company_name: companyName, alert_email: alertEmail || null })
         .eq("id", userId);
 
       if (error) throw error;
@@ -126,6 +130,28 @@ export default function SettingsPage() {
               />
               <p className="text-xs text-muted-foreground">
                 Email cannot be changed here
+              </p>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="companyName">Company Name</Label>
+              <Input
+                id="companyName"
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+                placeholder="Your company name"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="alertEmail">Alert Email</Label>
+              <Input
+                id="alertEmail"
+                type="email"
+                value={alertEmail}
+                onChange={(e) => setAlertEmail(e.target.value)}
+                placeholder="alerts@yourcompany.com"
+              />
+              <p className="text-xs text-muted-foreground">
+                Defaults to your account email if left blank
               </p>
             </div>
             <div className="space-y-2">
