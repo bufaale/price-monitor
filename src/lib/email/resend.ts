@@ -8,12 +8,18 @@ function escapeHtml(str: string): string {
     .replace(/"/g, "&quot;");
 }
 
-export const resend = new Resend(process.env.RESEND_API_KEY);
+function getResendClient() {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) {
+    throw new Error("RESEND_API_KEY is not set");
+  }
+  return new Resend(key);
+}
 
 const FROM = process.env.EMAIL_FROM || "noreply@yourdomain.com";
 
 export async function sendWelcomeEmail(email: string, name: string) {
-  return resend.emails.send({
+  return getResendClient().emails.send({
     from: FROM,
     to: email,
     subject: "Welcome to PriceWise!",
@@ -26,7 +32,7 @@ export async function sendWelcomeEmail(email: string, name: string) {
 }
 
 export async function sendSubscriptionEmail(email: string, plan: string) {
-  return resend.emails.send({
+  return getResendClient().emails.send({
     from: FROM,
     to: email,
     subject: `You're now on the ${escapeHtml(plan)} plan!`,
@@ -40,7 +46,7 @@ export async function sendSubscriptionEmail(email: string, plan: string) {
 }
 
 export async function sendPasswordResetEmail(email: string, resetUrl: string) {
-  return resend.emails.send({
+  return getResendClient().emails.send({
     from: FROM,
     to: email,
     subject: "Reset your password",
@@ -64,7 +70,7 @@ export async function sendPriceAlertEmail(
   const direction = changePercent < 0 ? "dropped" : "increased";
   const color = changePercent < 0 ? "#16a34a" : "#dc2626";
 
-  return resend.emails.send({
+  return getResendClient().emails.send({
     from: FROM,
     to: email,
     subject: `Price Alert: ${escapeHtml(productName)} ${direction} ${Math.abs(changePercent)}%`,
