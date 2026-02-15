@@ -7,34 +7,34 @@ import {
 
 const faqItems = [
   {
-    question: "What tech stack does this use?",
+    question: "How does price tracking work?",
     answer:
-      "This boilerplate is built with Next.js 16, TypeScript, Tailwind CSS 4, shadcn/ui, Supabase (PostgreSQL + Auth), Stripe for payments, Vercel AI SDK for AI features, and Resend for transactional emails. Everything is pre-configured and ready to go.",
+      "You add competitor product URLs, and PriceWise automatically visits each page daily to extract the current price. We use structured data (JSON-LD, Open Graph) for accurate extraction, with CSS selector fallback for custom setups.",
   },
   {
-    question: "Is this a one-time purchase?",
+    question: "What websites can you track?",
     answer:
-      "Yes, pay once and get lifetime access including all future updates. No recurring fees, no hidden costs. You own the code forever.",
+      "PriceWise works with most e-commerce sites that render prices in HTML, including Amazon, Shopify stores, WooCommerce, BigCommerce, and custom sites. If a site renders prices server-side, we can track it.",
   },
   {
-    question: "Can I use this for multiple projects?",
+    question: "How do alerts work?",
     answer:
-      "Yes, the license allows unlimited projects for both personal and commercial use. Build as many SaaS products as you want with a single purchase.",
+      "When a price change exceeds your configured threshold (default 1%), you get an email notification immediately. Pro and Business plans also support webhook notifications for custom integrations.",
   },
   {
-    question: "Do I need to know AI/ML to use this?",
+    question: "What does the AI Strategy feature do?",
     answer:
-      "No, the AI features are pre-configured and ready to use out of the box. Just add your API keys and start building. The Vercel AI SDK handles all the complexity for you.",
+      "Our AI analyzes your competitors' price history, identifies patterns (seasonal changes, promotional cycles), and recommends optimal price points. It considers your competitive position and suggests adjustments to maximize margins.",
   },
   {
-    question: "What kind of support is included?",
+    question: "Can I export my data?",
     answer:
-      "You get access to GitHub issues for bug reports, a Discord community for questions and discussions, and detailed documentation covering every feature. We're here to help you ship.",
+      "Yes, all plans include CSV export. Business plan users also get API access to integrate price data directly into their existing pricing systems, ERPs, or custom dashboards.",
   },
   {
-    question: "Can I request new features?",
+    question: "Is there a free trial?",
     answer:
-      "Absolutely! We actively develop based on community feedback. Feature requests are welcome on GitHub, and popular requests get prioritized in our roadmap.",
+      "Yes, new accounts get a 14-day free trial of the Starter plan. No credit card required. After the trial, you can upgrade or continue with limited free features.",
   },
 ];
 
@@ -45,7 +45,7 @@ export function FAQ() {
         <div className="text-center">
           <h2 className="text-3xl font-bold">Frequently asked questions</h2>
           <p className="text-muted-foreground mt-4 mx-auto max-w-2xl">
-            Everything you need to know about the boilerplate.
+            Everything you need to know about PriceWise.
           </p>
         </div>
         <div className="mt-12">

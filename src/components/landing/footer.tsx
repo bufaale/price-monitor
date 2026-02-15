@@ -8,15 +8,15 @@ const footerLinks = {
     links: [
       { label: "Features", href: "#features" },
       { label: "Pricing", href: "#pricing" },
-      { label: "Docs", href: "#" },
+      { label: "API Docs", href: "#" },
     ],
   },
-  company: {
-    title: "Company",
+  resources: {
+    title: "Resources",
     links: [
-      { label: "About", href: "#" },
       { label: "Blog", href: "#" },
-      { label: "Contact", href: "#" },
+      { label: "Changelog", href: "#" },
+      { label: "Status", href: "#" },
     ],
   },
   legal: {

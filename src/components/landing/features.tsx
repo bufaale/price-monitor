@@ -1,10 +1,10 @@
 import {
-  Bot,
-  Shield,
-  CreditCard,
-  Mail,
-  LayoutDashboard,
-  Rocket,
+  TrendingUp,
+  Search,
+  Bell,
+  Brain,
+  BarChart3,
+  Download,
 } from "lucide-react";
 import {
   Card,
@@ -16,40 +16,40 @@ import {
 
 const features = [
   {
-    icon: Bot,
-    title: "AI-Powered",
+    icon: TrendingUp,
+    title: "Price Tracking",
     description:
-      "Vercel AI SDK with multi-provider streaming. Claude, GPT, and more — switch with one line.",
+      "Add competitor product URLs and track prices automatically. Daily scans with instant change detection.",
   },
   {
-    icon: Shield,
-    title: "Authentication",
+    icon: Search,
+    title: "Smart Extraction",
     description:
-      "Supabase Auth with email, Google, and GitHub. Protected routes and session management built-in.",
+      "Automatically extracts prices using structured data (JSON-LD, Open Graph) with CSS selector fallback for any site.",
   },
   {
-    icon: CreditCard,
-    title: "Payments",
+    icon: Bell,
+    title: "Instant Alerts",
     description:
-      "Stripe subscriptions, one-time payments, and usage-based billing. Webhooks synced to your database.",
+      "Get notified immediately when competitors change prices. Email alerts and webhook integrations for your workflow.",
   },
   {
-    icon: Mail,
-    title: "Email",
+    icon: Brain,
+    title: "AI Strategy",
     description:
-      "Resend for transactional emails. Welcome emails, password resets, and subscription confirmations.",
+      "Claude AI analyzes competitor pricing patterns and recommends optimal price points to maximize your margins.",
   },
   {
-    icon: LayoutDashboard,
-    title: "Dashboard",
+    icon: BarChart3,
+    title: "Historical Charts",
     description:
-      "Beautiful sidebar layout with dark mode. Responsive design that works on every screen.",
+      "Interactive price history charts. Spot trends, seasonal patterns, and competitor strategies over time.",
   },
   {
-    icon: Rocket,
-    title: "Deploy in Minutes",
+    icon: Download,
+    title: "Export & API",
     description:
-      "One-click deploy to Vercel. Environment variables template and setup guide included.",
+      "Export data as CSV or integrate via API. Connect PriceWise to your existing pricing systems.",
   },
 ];
 
@@ -59,11 +59,10 @@ export function Features() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="text-center">
           <h2 className="text-3xl font-bold">
-            Everything you need to ship fast
+            Everything you need to monitor competitor prices
           </h2>
           <p className="text-muted-foreground mt-4 mx-auto max-w-2xl">
-            Pre-configured integrations and components so you can focus on what
-            matters — your product.
+            Track, analyze, and optimize your pricing with powerful tools.
           </p>
         </div>
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
