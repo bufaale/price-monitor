@@ -39,6 +39,7 @@ export interface AiUsage {
 }
 
 export interface Competitor {
+  [key: string]: unknown;
   id: string;
   user_id: string;
   name: string;
@@ -48,6 +49,7 @@ export interface Competitor {
 }
 
 export interface Product {
+  [key: string]: unknown;
   id: string;
   user_id: string;
   competitor_id: string;
@@ -64,6 +66,7 @@ export interface Product {
 }
 
 export interface PriceHistory {
+  [key: string]: unknown;
   id: string;
   product_id: string;
   price: number;
@@ -72,6 +75,7 @@ export interface PriceHistory {
 }
 
 export interface Alert {
+  [key: string]: unknown;
   id: string;
   user_id: string;
   product_id: string;
@@ -86,6 +90,7 @@ export interface Alert {
 }
 
 export interface AlertSettings {
+  [key: string]: unknown;
   id: string;
   user_id: string;
   email_enabled: boolean;
@@ -97,6 +102,7 @@ export interface AlertSettings {
 }
 
 export interface AiGeneration {
+  [key: string]: unknown;
   id: string;
   user_id: string;
   prompt_summary: string;
@@ -173,6 +179,120 @@ export interface Database {
           user_id: string;
           tokens_used: number;
           model: string;
+        };
+        Update: {
+          [key: string]: unknown;
+        };
+        Relationships: [];
+      };
+      competitors: {
+        Row: Competitor;
+        Insert: {
+          [key: string]: unknown;
+          user_id: string;
+          name: string;
+          website_url: string;
+          status?: "active" | "paused";
+        };
+        Update: {
+          [key: string]: unknown;
+          name?: string;
+          website_url?: string;
+          status?: "active" | "paused";
+        };
+        Relationships: [];
+      };
+      products: {
+        Row: Product;
+        Insert: {
+          [key: string]: unknown;
+          user_id: string;
+          competitor_id: string;
+          name: string;
+          url: string;
+          css_selector?: string | null;
+        };
+        Update: {
+          [key: string]: unknown;
+          name?: string;
+          url?: string;
+          css_selector?: string | null;
+          current_price?: number | null;
+          previous_price?: number | null;
+          currency?: string;
+          last_scraped_at?: string | null;
+          scrape_status?: "success" | "error" | "pending";
+          scrape_error?: string | null;
+        };
+        Relationships: [];
+      };
+      price_history: {
+        Row: PriceHistory;
+        Insert: {
+          [key: string]: unknown;
+          product_id: string;
+          price: number;
+          currency: string;
+          scraped_at?: string;
+        };
+        Update: {
+          [key: string]: unknown;
+        };
+        Relationships: [];
+      };
+      alerts: {
+        Row: Alert;
+        Insert: {
+          [key: string]: unknown;
+          user_id: string;
+          product_id: string;
+          alert_type: "price_drop" | "price_increase";
+          old_price: number;
+          new_price: number;
+          change_percent: number;
+          notified_email?: boolean;
+          notified_webhook?: boolean;
+          read?: boolean;
+        };
+        Update: {
+          [key: string]: unknown;
+          read?: boolean;
+          notified_email?: boolean;
+          notified_webhook?: boolean;
+        };
+        Relationships: [];
+      };
+      alert_settings: {
+        Row: AlertSettings;
+        Insert: {
+          [key: string]: unknown;
+          user_id: string;
+          email_enabled?: boolean;
+          webhook_url?: string | null;
+          webhook_enabled?: boolean;
+          threshold_percent?: number;
+          notify_price_drop?: boolean;
+          notify_price_increase?: boolean;
+        };
+        Update: {
+          [key: string]: unknown;
+          email_enabled?: boolean;
+          webhook_url?: string | null;
+          webhook_enabled?: boolean;
+          threshold_percent?: number;
+          notify_price_drop?: boolean;
+          notify_price_increase?: boolean;
+        };
+        Relationships: [];
+      };
+      ai_generations: {
+        Row: AiGeneration;
+        Insert: {
+          [key: string]: unknown;
+          user_id: string;
+          prompt_summary: string;
+          result: string;
+          tokens_used: number;
         };
         Update: {
           [key: string]: unknown;

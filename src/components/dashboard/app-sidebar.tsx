@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
-  MessageSquare,
   Settings,
   CreditCard,
   Key,
@@ -26,7 +25,6 @@ import { siteConfig } from "@/config/site";
 
 const mainNav = [
   { title: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { title: "AI Chat", href: "/ai-chat", icon: MessageSquare },
 ];
 
 const settingsNav = [

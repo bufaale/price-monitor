@@ -38,7 +38,6 @@ export async function updateSession(request: NextRequest) {
     !user &&
     (request.nextUrl.pathname.startsWith("/dashboard") ||
       request.nextUrl.pathname.startsWith("/settings") ||
-      request.nextUrl.pathname.startsWith("/ai-chat") ||
       request.nextUrl.pathname.startsWith("/admin"))
   ) {
     const url = request.nextUrl.clone();
