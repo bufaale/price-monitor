@@ -31,15 +31,13 @@ export function UpgradeButtons() {
     }
   }
 
-  const paidPlans = pricingPlans.filter((p) => p.price.monthly > 0);
-
   return (
     <div className="space-y-3">
       {error && (
         <p className="text-sm text-destructive">{error}</p>
       )}
       <div className="flex flex-wrap gap-3">
-        {paidPlans.map((plan) => (
+        {pricingPlans.map((plan) => (
           <Button
             key={plan.id}
             onClick={() => handleCheckout(plan.stripePriceId.monthly)}
@@ -51,7 +49,7 @@ export function UpgradeButtons() {
             ) : null}
             {loading === plan.stripePriceId.monthly
               ? "Loading..."
-              : `Upgrade to ${plan.name}`}
+              : `${plan.name} — $${plan.price.monthly}/mo`}
           </Button>
         ))}
       </div>

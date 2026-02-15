@@ -7,6 +7,8 @@ export interface Profile {
   stripe_customer_id: string | null;
   subscription_status: "active" | "trialing" | "past_due" | "canceled" | "free";
   subscription_plan: string | null;
+  company_name: string | null;
+  alert_email: string | null;
   api_key: string | null;
   role: "user" | "admin";
   created_at: string;
@@ -36,6 +38,73 @@ export interface AiUsage {
   created_at: string;
 }
 
+export interface Competitor {
+  id: string;
+  user_id: string;
+  name: string;
+  website_url: string;
+  status: "active" | "paused";
+  created_at: string;
+}
+
+export interface Product {
+  id: string;
+  user_id: string;
+  competitor_id: string;
+  name: string;
+  url: string;
+  css_selector: string | null;
+  current_price: number | null;
+  previous_price: number | null;
+  currency: string;
+  last_scraped_at: string | null;
+  scrape_status: "success" | "error" | "pending";
+  scrape_error: string | null;
+  created_at: string;
+}
+
+export interface PriceHistory {
+  id: string;
+  product_id: string;
+  price: number;
+  currency: string;
+  scraped_at: string;
+}
+
+export interface Alert {
+  id: string;
+  user_id: string;
+  product_id: string;
+  alert_type: "price_drop" | "price_increase";
+  old_price: number;
+  new_price: number;
+  change_percent: number;
+  notified_email: boolean;
+  notified_webhook: boolean;
+  read: boolean;
+  created_at: string;
+}
+
+export interface AlertSettings {
+  id: string;
+  user_id: string;
+  email_enabled: boolean;
+  webhook_url: string | null;
+  webhook_enabled: boolean;
+  threshold_percent: number;
+  notify_price_drop: boolean;
+  notify_price_increase: boolean;
+}
+
+export interface AiGeneration {
+  id: string;
+  user_id: string;
+  prompt_summary: string;
+  result: string;
+  tokens_used: number;
+  created_at: string;
+}
+
 export interface Database {
   public: {
     Tables: {
@@ -50,6 +119,8 @@ export interface Database {
           stripe_customer_id?: string | null;
           subscription_status?: "active" | "trialing" | "past_due" | "canceled" | "free";
           subscription_plan?: string | null;
+          company_name?: string | null;
+          alert_email?: string | null;
           api_key?: string | null;
           role?: "user" | "admin";
         };
@@ -62,6 +133,8 @@ export interface Database {
           stripe_customer_id?: string | null;
           subscription_status?: "active" | "trialing" | "past_due" | "canceled" | "free";
           subscription_plan?: string | null;
+          company_name?: string | null;
+          alert_email?: string | null;
           api_key?: string | null;
           role?: "user" | "admin";
           updated_at?: string;
