@@ -1,39 +1,19 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MessageSquare, CreditCard, Zap, Users } from "lucide-react";
+import { Building2, Package, TrendingDown, Bell } from "lucide-react";
 
 interface StatsCardsProps {
-  aiGenerations: number;
-  planName: string;
-  planPrice: number;
-  status: string;
+  competitors: number;
+  products: number;
+  priceChanges24h: number;
+  unreadAlerts: number;
 }
 
-export function StatsCards({ aiGenerations, planName, planPrice, status }: StatsCardsProps) {
+export function StatsCards({ competitors, products, priceChanges24h, unreadAlerts }: StatsCardsProps) {
   const stats = [
-    {
-      title: "AI Generations",
-      value: aiGenerations.toLocaleString(),
-      description: "This month",
-      icon: MessageSquare,
-    },
-    {
-      title: "Current Plan",
-      value: planName,
-      description: planPrice > 0 ? `$${planPrice}/month` : "Free tier",
-      icon: CreditCard,
-    },
-    {
-      title: "Status",
-      value: status === "active" ? "Active" : "Free",
-      description: status === "active" ? "Subscription active" : "No active subscription",
-      icon: Zap,
-    },
-    {
-      title: "API Calls",
-      value: "—",
-      description: "Coming soon",
-      icon: Users,
-    },
+    { title: "Competitors", value: competitors, description: "Active tracking", icon: Building2 },
+    { title: "Products", value: products, description: "Tracked items", icon: Package },
+    { title: "Price Changes", value: priceChanges24h, description: "Last 24 hours", icon: TrendingDown },
+    { title: "Unread Alerts", value: unreadAlerts, description: "Needs attention", icon: Bell },
   ];
 
   return (
