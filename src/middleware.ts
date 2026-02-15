@@ -11,5 +11,11 @@ export const config = {
     "/settings/:path*",
     "/admin/:path*",
     "/auth/:path*",
+    "/api/competitors/:path*",
+    "/api/products/:path*",
+    "/api/alerts/:path*",
+    "/api/alert-settings/:path*",
+    "/api/scrape/:path*",
+    "/api/ai/:path*",
   ],
 };

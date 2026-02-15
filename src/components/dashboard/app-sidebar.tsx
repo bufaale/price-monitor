@@ -4,6 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
+  Building2,
+  Package,
+  Bell,
+  Brain,
   Settings,
   CreditCard,
   Key,
@@ -25,6 +29,10 @@ import { siteConfig } from "@/config/site";
 
 const mainNav = [
   { title: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { title: "Competitors", href: "/dashboard/competitors", icon: Building2 },
+  { title: "Products", href: "/dashboard/products", icon: Package },
+  { title: "Alerts", href: "/dashboard/alerts", icon: Bell },
+  { title: "AI Strategy", href: "/dashboard/strategy", icon: Brain },
 ];
 
 const settingsNav = [
