@@ -19,6 +19,9 @@
     },
     "src/app/api/cron/scrape/route.ts": {
       "maxDuration": 60
+    },
+    "src/app/api/ai/strategy/route.ts": {
+      "maxDuration": 60
     }
   }
 }
