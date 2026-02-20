@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { ArrowDown, ArrowUp } from "lucide-react";
+import { CrossPromoBanner } from "@/components/dashboard/cross-promo-banner";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -92,6 +93,9 @@ export default async function DashboardPage() {
           )}
         </CardContent>
       </Card>
+
+      {/* Cross-Promotion */}
+      <CrossPromoBanner />
     </div>
   );
 }
